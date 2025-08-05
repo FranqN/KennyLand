@@ -1,0 +1,99 @@
+{% extends 'patientdashboard/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center">Welcome, {{ current_user.username }}</h2>
+
+  <div class="row mt-4">
+    <!-- Profile Card -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">Profile</div>
+        <div class="card-body">
+          {% if patient %}
+            <p><strong>Name:</strong> {{ patient.full_name }}</p>
+            <p><strong>Gender:</strong> {{ patient.gender }}</p>
+            <p><strong>DOB:</strong> {{ patient.dob }}</p>
+            <p><strong>Phone:</strong> {{ patient.phone }}</p>
+          {% else %}
+            <p class="text-danger">No profile found. Please contact the receptionist to complete your registration.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointments -->
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-success text-white">Appointments</div>
+        <div class="card-body">
+          {% if appointments %}
+            <ul class="list-group">
+              {% for appointment in appointments %}
+                <li class="list-group-item">
+                  <strong>Date:</strong> {{ appointment.date.strftime('%Y-%m-%d %H:%M') }}<br>
+                  <strong>Doctor:</strong> {{ appointment.doctor.username }}<br>
+                  <strong>Status:</strong> {{ appointment.status }}
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>No appointments found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vitals & Medications -->
+  <div class="row mt-4">
+    <!-- Vitals -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-info text-white">Recent Vitals</div>
+        <div class="card-body">
+          {% if vitals %}
+            <ul class="list-group">
+              {% for v in vitals %}
+              <li class="list-group-item">
+                <strong>Temp:</strong> {{ v.temperature }} °C,
+                <strong>BP:</strong> {{ v.blood_pressure }},
+                <strong>Pulse:</strong> {{ v.pulse }} bpm
+                <small class="text-muted float-end">{{ v.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>No vitals recorded yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Medications -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-warning">Medications</div>
+        <div class="card-body">
+          {% if medications %}
+            <ul class="list-group">
+              {% for med in medications %}
+              <li class="list-group-item">
+                <strong>{{ med.name }}</strong> - {{ med.dosage }}
+                {% if med.administered %}
+                  <span class="badge bg-success">Given</span>
+                {% else %}
+                  <span class="badge bg-secondary">Pending</span>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>No medications prescribed yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
