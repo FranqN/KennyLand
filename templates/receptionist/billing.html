@@ -1,0 +1,25 @@
+{% extends 'receptionist/base.html' %}
+{% block title %}Billing{% endblock %}
+
+{% block content %}
+<h3>Patient Billing</h3>
+<form method="POST" action="{{ url_for('billing') }}">
+    <div class="mb-3">
+        <label class="form-label">Patient Name or ID</label>
+        <input type="text" name="patient_id" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Amount (KES)</label>
+        <input type="number" name="amount" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Payment Method</label>
+        <select name="method" class="form-select">
+            <option value="cash">Cash</option>
+            <option value="mpesa">Mpesa</option>
+            <option value="card">Card</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Record Payment</button>
+</form>
+{% endblock %}

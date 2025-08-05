@@ -1,0 +1,13 @@
+{% extends 'receptionist/base.html' %}
+{% block title %}Check-in Patient{% endblock %}
+
+{% block content %}
+<h3>Check-in Patient</h3>
+<form method="POST" action="{{ url_for('check_in_patient') }}">
+    <div class="mb-3">
+        <label class="form-label">Patient ID or Phone</label>
+        <input type="text" name="patient_id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Check-in</button>
+</form>
+{% endblock %}

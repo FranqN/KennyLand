@@ -1,0 +1,28 @@
+{% extends 'receptionist/base.html' %}
+{% block title %}Add Patient{% endblock %}
+
+{% block content %}
+<h3>Add New Patient</h3>
+<form method="POST" action="{{ url_for('register_patient') }}">
+    <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" name="full_name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <input type="text" name="phone" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" name="dob" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <select name="gender" class="form-select">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Patient</button>
+</form>
+{% endblock %}

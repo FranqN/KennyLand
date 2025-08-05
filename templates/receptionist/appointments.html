@@ -1,0 +1,26 @@
+{% extends 'receptionist/base.html' %}
+{% block title %}View Appointments{% endblock %}
+
+{% block content %}
+<h3>Today's Appointments</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appt in appointments %}
+        <tr>
+            <td>{{ appt.patient_name }}</td>
+            <td>{{ appt.doctor_name }}</td>
+            <td>{{ appt.time }}</td>
+            <td>{{ appt.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
