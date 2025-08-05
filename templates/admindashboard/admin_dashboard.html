@@ -1,0 +1,66 @@
+<!-- templates/admindashboard/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Kennyland Medical Centre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h2 class="mb-4 text-primary">Welcome, Admin</h2>
+        <div class="row text-white">
+            <div class="col-md-4 mb-3">
+                <div class="card bg-primary shadow">
+                    <div class="card-body">
+                        <h5>Total Users</h5>
+                        <h3>{{ total_users }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-success shadow">
+                    <div class="card-body">
+                        <h5>Total Patients</h5>
+                        <h3>{{ total_patients }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-info shadow">
+                    <div class="card-body">
+                        <h5>Doctors</h5>
+                        <h3>{{ total_doctors }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-warning shadow">
+                    <div class="card-body">
+                        <h5>Nurses</h5>
+                        <h3>{{ total_nurses }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-secondary shadow">
+                    <div class="card-body">
+                        <h5>Today’s Appointments</h5>
+                        <h3>{{ todays_appointments }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h4 class="mt-4">Quick Actions</h4>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('manage_users') }}" class="btn btn-outline-primary">Manage Users</a>
+            <a href="{{ url_for('add_user') }}" class="btn btn-outline-success">Add New User</a>
+            <a href="{{ url_for('view_appointments') }}" class="btn btn-outline-info">View Appointments</a>
+            <a href="{{ url_for('system_settings') }}" class="btn btn-outline-dark">System Settings</a>
+        </div>
+    </div>
+</body>
+</html>

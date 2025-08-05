@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Patients - Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 220px;
+            background-color: #343a40;
+            height: 100vh;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2 style="text-align: center;">Admin</h2>
+        <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('manage_patients') }}">Manage Patients</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="content">
+        <h1>Manage Patients</h1>
+
+        <button class="add-btn">+ Add New Patient</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample row -->
+                <tr>
+                    <td>1</td>
+                    <td>Jane Doe</td>
+                    <td>jane@example.com</td>
+                    <td>0712345678</td>
+                    <td>
+                        <button>Edit</button>
+                        <button style="color: red;">Delete</button>
+                    </td>
+                </tr>
+                <!-- Loop through patients here -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
