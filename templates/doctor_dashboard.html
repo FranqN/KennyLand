@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding: 1rem;
+        }
+        .sidebar a {
+            color: #ddd;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h4>Doctor Panel</h4>
+        <a href="{{ url_for('doctor_dashboard') }}">Dashboard</a>
+        <a href="#">View Appointments</a>
+        <a href="#">Patient Medical Records</a>
+        <a href="#">Add Diagnosis / Prescription</a>
+        <a href="#">My Patients</a>
+        <a href="#">Messages</a>
+        <a href="#">Profile</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <div class="content">
+        <h2>Welcome, Dr. {{ current_user.name }}</h2>
+        <p>This is your dashboard where you can manage your patients, appointments, and records.</p>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Today's Appointments</h5>
+                        <p class="card-text">You have <strong>5</strong> appointments today.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Assigned Patients</h5>
+                        <p class="card-text">Total: <strong>12</strong> patients.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Messages</h5>
+                        <p class="card-text"><strong>3</strong> unread notifications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Kennyland Medical Centre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f1f3f5;
+    }
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .form-title {
+      font-weight: 600;
+    }
+    .flash {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .flash.success {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+    .flash.danger {
+      background-color: #f8d7da;
+      color: #842029;
+    }
+  </style>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-5">
+      <div class="card p-4">
+        <h3 class="text-center form-title mb-4">Welcome Back</h3>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+
+          <div class="text-center mt-3">
+            <small><a href="{{ url_for('forgot_password') }}">Forgot password?</a></small><br>
+            <small>Don't have an account? <a href="{{ url_for('register') }}">Register</a></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

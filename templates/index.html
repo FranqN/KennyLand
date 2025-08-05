@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kennyland Medical Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS & Animate.css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        header.hero {
+            min-height: 85vh;
+            background: url("{{ url_for('static', filename='images/header-bg.jpg') }}") center center / cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            margin-bottom: 40px;
+        }
+
+        header.hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 0;
+        }
+
+        header.hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar.fixed-top {
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar.fixed-top.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            color: #000;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .icon-box i {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .rounded-circle {
+            object-fit: cover;
+        }
+
+        footer {
+            background: #222;
+        }
+
+        @media (max-width: 768px) {
+            header.hero {
+                min-height: 65vh;
+            }
+
+            .nav-link {
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+		.blockquote-footer {
+  background-color: transparent !important;
+  padding: 0;
+  margin-top: 0.5rem;
+  color: #343a40; /* Optional: set your preferred text color */
+  font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-dark" href="#">Kennyland Medical</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                <li class="nav-item"><a class="nav-link" href="#health-tips">Health Tips</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="btn btn-primary btn-sm ms-3" href="{{ url_for('login') }}">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero animate__animated animate__fadeIn">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Welcome to Kennyland Medical Centre</h1>
+        <p class="lead">Your Health, Our Priority</p>
+        <a href="#about" class="btn btn-light btn-lg mt-3">Learn More</a>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <h2 class="text-center">Our Mission & Vision</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h5>Mission</h5>
+                <p>To provide quality and affordable healthcare services with compassion, professionalism, and innovation.</p>
+            </div>
+            <div class="col-md-6">
+                <h5>Vision</h5>
+                <p>To become the most trusted and leading healthcare provider in East Africa through excellence in medical services.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="bg-light">
+    <div class="container">
+        <h2 class="text-center">Our Services</h2>
+        <div class="row mt-4 text-center">
+            <div class="col-md-4 icon-box">
+                <i class="bi bi-person-check"></i>
+                <h5>Outpatient Care</h5>
+                <p>Walk-in consultations with experienced doctors.</p>
+            </div>
+            <div class="col-md-4 icon-box">
+                <i class="bi bi-hospital"></i>
+                <h5>Inpatient Services</h5>
+                <p>Comfortable wards and 24/7 nursing care.</p>
+            </div>
+            <div class="col-md-4 icon-box">
+                <i class="bi bi-truck"></i>
+                <h5>Emergency & Ambulance</h5>
+                <p>Quick-response emergency services at your doorstep.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Departments -->
+<section id="departments">
+    <div class="container">
+        <h2 class="text-center">Our Departments</h2>
+        <div class="row mt-4 text-center">
+            <div class="col-md-3 icon-box">
+                <i class="bi bi-heart-pulse"></i>
+                <h6>Cardiology</h6>
+                <p>Heart and vascular care</p>
+            </div>
+            <div class="col-md-3 icon-box">
+                <i class="bi bi-emoji-smile"></i>
+                <h6>Paediatrics</h6>
+                <p>Child health and vaccinations</p>
+            </div>
+            <div class="col-md-3 icon-box">
+                <i class="bi bi-x-diamond"></i>
+                <h6>Radiology</h6>
+                <p>X-rays, Ultrasounds, MRI</p>
+            </div>
+            <div class="col-md-3 icon-box">
+                <i class="bi bi-shield-plus"></i>
+                <h6>Dental</h6>
+                <p>Oral care and surgery</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Doctors -->
+<section id="doctors" class="bg-light">
+    <div class="container">
+        <h2 class="text-center">Meet Our Doctors</h2>
+        <div class="row mt-4 text-center">
+            {% for doctor in [
+                {"name": "Dr. Mercy Wanjiru", "specialty": "General Practitioner", "image": "doctor1.jpg"},
+                {"name": "Dr. James Mwangi", "specialty": "Cardiologist", "image": "doctor2.jpg"},
+                {"name": "Dr. Sarah Njeri", "specialty": "Pediatrician", "image": "doctor3.jpg"}
+            ] %}
+            <div class="col-md-4 mb-4">
+                <img src="{{ url_for('static', filename='images/doctors/' + doctor.image) }}" class="rounded-circle mb-2" width="150" height="150" alt="{{ doctor.name }}">
+                <h6>{{ doctor.name }}</h6>
+                <p>{{ doctor.specialty }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials">
+    <div class="container">
+        <h2 class="text-center">What Our Patients Say</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <blockquote class="blockquote">
+                    <p>"The doctors were very professional and the care was outstanding."</p>
+                    <footer class="blockquote-footer">Jane M.</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-6">
+                <blockquote class="blockquote">
+                    <p>"I received quick and accurate diagnosis. Highly recommend!"</p>
+                    <footer class="blockquote-footer">Peter K.</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Health Tips -->
+<section id="health-tips" class="bg-success text-white">
+    <div class="container">
+        <h2 class="text-center">Daily Health Tips</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-white text-dark rounded shadow-sm h-100">
+                    <h6>Stay Hydrated</h6>
+                    <p>Drink at least 8 glasses of water daily to keep your body functioning properly.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-white text-dark rounded shadow-sm h-100">
+                    <h6>Exercise Regularly</h6>
+                    <p>Engage in at least 30 minutes of physical activity daily to maintain heart and muscle health.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="p-3 bg-white text-dark rounded shadow-sm h-100">
+                    <h6>Eat Balanced Meals</h6>
+                    <p>Incorporate vegetables, fruits, proteins, and whole grains into your meals every day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-light">
+    <div class="container">
+        <h2 class="text-center">Frequently Asked Questions</h2>
+        <div class="accordion mt-4" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        Do you accept NHIF?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">Yes, we accept NHIF and most major insurance providers.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        Do you offer home visits?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">Yes, our doctors can attend to patients at home upon request.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container text-center">
+        <h2>Contact Us</h2>
+        <p>Email: info@kennylandmed.org | Phone: +254 712 345678</p>
+        <p>Location: Meru Town, Kenya</p>
+        <a href="{{ url_for('register') }}" class="btn btn-success mt-3">Book an Appointment</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2025 Kennyland Medical Centre. All rights reserved.</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
