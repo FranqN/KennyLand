@@ -1,0 +1,35 @@
+{% extends "nursedashboard/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">Medications for {{ patient.name }}</h3>
+
+    {% if medications %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Dosage</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for med in medications %}
+                <tr>
+                    <td>{{ med.name }}</td>
+                    <td>{{ med.dosage }}</td>
+                    <td>
+                        {% if med.administered %}
+                            <span class="badge bg-success">Administered</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No medications recorded for this patient.</p>
+    {% endif %}
+</div>
+{% endblock %}

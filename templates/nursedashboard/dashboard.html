@@ -1,0 +1,13 @@
+{% extends 'nursedashboard/base.html' %}
+{% block title %}Nurse Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, Nurse {{ current_user.name }}</h2>
+<div class="grid">
+  <a href="{{ url_for('view_patients') }}" class="card">View Patients</a>
+  <a href="{{ url_for('nursing_notes') }}" class="card">Nursing Notes</a>
+  <a href="{{ url_for('view_medications') }}" class="card">Medications</a>
+  <a href="{{ url_for('daily_tasks') }}" class="card">Daily Tasks</a>
+  <a href="{{ url_for('logout') }}" class="card logout">Logout</a>
+</div>
+{% endblock %}

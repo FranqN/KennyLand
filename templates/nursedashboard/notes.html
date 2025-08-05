@@ -1,0 +1,28 @@
+{% extends "nursedashboard/base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3 class="mb-4">Nursing Notes for {{ patient.name }}</h3>
+
+    <form method="POST" class="mb-4">
+        <div class="form-group">
+            <label for="content">New Note</label>
+            <textarea class="form-control" name="content" id="content" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Add Note</button>
+    </form>
+
+    <h5>Previous Notes</h5>
+    {% if notes %}
+        <ul class="list-group">
+            {% for note in notes %}
+                <li class="list-group-item">
+                    <strong>{{ note.timestamp.strftime('%Y-%m-%d %H:%M') }}</strong><br>
+                    {{ note.content }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notes recorded yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

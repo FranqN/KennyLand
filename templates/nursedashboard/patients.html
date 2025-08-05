@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients</title>
+</head>
+<body>
+    <h2>Patient List</h2>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.name }}</td>
+            <td>
+                <a href="{{ url_for('nurse_record_vitals', patient_id=patient.id) }}">Record Vitals</a> |
+                <a href="{{ url_for('nurse_nursing_notes', patient_id=patient.id) }}">Nursing Notes</a> |
+                <a href="{{ url_for('nurse_view_medications', patient_id=patient.id) }}">Medications</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

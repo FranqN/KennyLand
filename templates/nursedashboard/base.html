@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Nurse Dashboard{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #0d6efd;
+            color: white;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #0b5ed7;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .logout-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar d-flex flex-column p-3">
+        <h4 class="mb-4">Nurse Panel</h4>
+        <a href="{{ url_for('nurse_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('view_patients') }}">View Patients</a>
+        <a href="{{ url_for('record_vitals') }}">Record Vitals</a>
+        <a href="{{ url_for('medication_administration') }}">Medication Admin</a>
+        <a href="{{ url_for('nursing_notes') }}">Nursing Notes</a>
+        <a href="{{ url_for('daily_tasks') }}">Daily Tasks</a>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+    </div>
+
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'nursedashboard/base.html' %}
+{% block title %}Record Vitals{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Record Vitals for Patient ID: {{ patient_id }}</h2>
+
+    <form method="post" action="#">
+        <div class="mb-3">
+            <label for="temperature" class="form-label">Temperature</label>
+            <input type="text" class="form-control" id="temperature" name="temperature">
+        </div>
+        <div class="mb-3">
+            <label for="blood_pressure" class="form-label">Blood Pressure</label>
+            <input type="text" class="form-control" id="blood_pressure" name="blood_pressure">
+        </div>
+        <div class="mb-3">
+            <label for="heart_rate" class="form-label">Heart Rate</label>
+            <input type="text" class="form-control" id="heart_rate" name="heart_rate">
+        </div>
+        <button type="submit" class="btn btn-success">Submit Vitals</button>
+    </form>
+</div>
+{% endblock %}
